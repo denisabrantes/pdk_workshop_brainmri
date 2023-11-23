@@ -10,7 +10,7 @@ input:
     empty_files: true
 transform:
   cmd: ["/bin/sh"]
-  stdin: ["python train.py --git-url https://git@github.com:/determined-ai/pdk.git --git-ref main --sub-dir examples/object-detection/experiment --config const.yaml --repo object-detection-data --model object-detection --project pdk-object-detection --incremental false"]
+  stdin: ["python train.py --git-url https://git@github.com/denisabrantes/pdk_workshop_brainmri.git --git-ref main --sub-dir experiment --config const.yaml --workspace denisd --mlde_project denisd-brain-mri --repo resize_images --model brain-mri-ws --project denisd-brain-mri-ws --incremental false"]
   image: pachyderm/pdk:train-v0.0.1
 secrets:
   - name: pipeline-secret

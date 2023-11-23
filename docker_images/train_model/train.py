@@ -65,6 +65,18 @@ def parse_args():
     )
 
     parser.add_argument(
+        "--workspace",
+        type=str,
+        help="Workspace for the Experiment",
+    )
+
+    parser.add_argument(
+        "--mlde_project",
+        type=str,
+        help="MLDE Project for the Experiment",
+    )
+
+    parser.add_argument(
         "--repo",
         type=str,
         help="Name of the Pachyderm's repository containing the dataset",
@@ -123,7 +135,7 @@ def read_config(conf_file):
 # =====================================================================================
 
 
-def setup_config(config_file, repo, pipeline, job_id, project):
+def setup_config(config_file, repo, pipeline, job_id, project, workspace, mlde_project):
     config = read_config(config_file)
     config["data"]["pachyderm"]["host"] = os.getenv("PACHD_PEER_SERVICE_HOST")
     config["data"]["pachyderm"]["port"] = os.getenv("PACHD_PEER_SERVICE_PORT")
@@ -131,7 +143,8 @@ def setup_config(config_file, repo, pipeline, job_id, project):
     config["data"]["pachyderm"]["branch"] = job_id
     config["data"]["pachyderm"]["token"] = os.getenv("PACH_TOKEN")
     config["data"]["pachyderm"]["project"] = project
-
+    config["workspace"] = workspace
+    config["project"] = mlde_project
     config["labels"] = [repo, job_id, pipeline]
 
     return config
@@ -295,7 +308,7 @@ def main():
     # --- Read and setup experiment config file. Then, run experiment
 
     config = setup_config(
-        config_file, args.repo, pipeline, job_id, args.project
+        config_file, args.repo, pipeline, job_id, args.project, args.workspace, args.mlde_project
     )
     client = create_client()
     model = get_or_create_model(client, args.model, pipeline, args.repo)
