@@ -1,0 +1,18 @@
+pipeline:
+  name: serve_report
+description: ""
+input:
+  pfs:
+    glob: /
+    repo: final_report
+    name: files
+    branch: master
+transform:
+  cmd: ["/bin/bash", "-c", "/usr/local/apache2/bin/apachectl;cp -r /pfs/files/* /usr/local/apache2/htdocs/"]
+  image: httpd:2.4
+service:
+  external_port: 8080
+  internal_port: 80
+  type: LoadBalancer
+parallelism_spec:
+  constant: 1

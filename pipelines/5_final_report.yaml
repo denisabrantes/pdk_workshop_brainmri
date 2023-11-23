@@ -1,0 +1,21 @@
+pipeline:
+  name: final_report
+description: Creates a report including Validation, Conversion and Resizing steps
+input:
+  pfs:
+     repo: create_report
+     glob: "/"
+transform:
+  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:1.31
+  cmd:
+    - python3
+    - ./report.py
+    - --report_type
+    - full
+    - --input_dir
+    - /pfs
+    - --output_dir
+    - /pfs/out
+datum_tries: 1
+reprocess_spec: every_job
+autoscaling: false

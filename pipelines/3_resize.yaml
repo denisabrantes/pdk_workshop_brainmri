@@ -1,0 +1,24 @@
+pipeline:
+  name: resize_images
+description: A pipeline that resizes images to 256x256 pixels, which is expected by the model.
+input:
+  pfs:
+    repo: convert_images
+    name: in
+# 1 datum with all image files:
+    glob: "/*[!_report]"
+# 1 datum per file (DO NOT RUN IN LAB):
+    # glob: "/**.tif"
+transform:
+  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:1.31
+  cmd:
+    - python3
+    - ./resize.py
+    - --input_dir
+    - /pfs/in
+    - --output_dir
+    - /pfs/out/
+datum_tries: 1
+parallelism_spec:
+  constant: 1
+autoscaling: true

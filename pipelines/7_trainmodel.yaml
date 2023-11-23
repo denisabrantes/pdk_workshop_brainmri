@@ -1,0 +1,28 @@
+pipeline:
+  name: train_model
+description: "Run the Brain MRI Training Experiment on MLDE"
+input:
+  pfs:
+    glob: "/*[!_report]"
+    repo: resize_images
+    name: data
+    branch: master
+    empty_files: true
+transform:
+  cmd: ["/bin/sh"]
+  stdin: ["python train.py --git-url https://git@github.com:/determined-ai/pdk.git --git-ref main --sub-dir examples/object-detection/experiment --config const.yaml --repo object-detection-data --model object-detection --project pdk-object-detection --incremental false"]
+  image: pachyderm/pdk:train-v0.0.1
+secrets:
+  - name: pipeline-secret
+    key: det_master
+    env_var: DET_MASTER
+  - name: pipeline-secret
+    key: det_user
+    env_var: DET_USER
+  - name: pipeline-secret
+    key: det_password
+    env_var: DET_PASSWORD
+  - name: pipeline-secret
+    key: pac_token
+    env_var: PAC_TOKEN
+autoscaling: true

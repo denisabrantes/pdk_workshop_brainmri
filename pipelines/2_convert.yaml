@@ -1,0 +1,24 @@
+pipeline:
+  name: convert_images
+description: A pipeline that converts images to TIFF format which is expected by the model.
+input:
+  pfs:
+    repo: validate_images
+    name: in
+# 1 datum with all image files:
+    glob: "/*[!_report]"
+# 1 datum per file (DO NOT RUN IN LAB):
+#    glob: "/**.{tif,tiff,png,jpg,jpeg,gif,bmp}"
+transform:
+  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:1.31
+  cmd:
+    - python3
+    - ./convert.py
+    - --input_dir
+    - /pfs/in
+    - --output_dir
+    - /pfs/out/
+datum_tries: 1
+parallelism_spec:
+  constant: 1
+autoscaling: true

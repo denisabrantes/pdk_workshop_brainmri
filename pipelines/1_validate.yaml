@@ -1,0 +1,19 @@
+pipeline:
+  name: validate_images
+description: A pipeline that validates the images uploaded to the input repository.
+input:
+  pfs:
+    repo: brain-mri-data
+    name: in
+    glob: "/"
+transform:
+  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:1.31
+  cmd:
+    - python3
+    - ./validate.py
+    - --input_dir
+    - /pfs/in
+    - --output_dir
+    - /pfs/out/
+datum_tries: 1
+autoscaling: true
