@@ -1,0 +1,27 @@
+pipeline:
+  name: deploy_model
+description: "Deploys a model into production via the KServe Python SDK."
+input:
+  pfs:
+    glob: /
+    repo: train_model
+    name: data
+    branch: master
+transform:
+  cmd: ["/bin/sh"]
+  stdin: ["python deploy.py --deployment-name denisd-ws-brain-deploy --cloud-model-host gcp --cloud-model-bucket denisd-pdk-repo-models --resource-requests cpu=2,memory=4Gi --resource-limits cpu=4,memory=8Gi"]
+  image: pachyderm/pdk:brain-deploy-v0.0.1
+  secrets: 
+  - name: pipeline-secret
+    key: det_master
+    env_var: DET_MASTER
+  - name: pipeline-secret
+    key: det_user
+    env_var: DET_USER
+  - name: pipeline-secret
+    key: det_password
+    env_var: DET_PASSWORD
+  - name: pipeline-secret
+    key: kserve_namespace
+    env_var: KSERVE_NAMESPACE
+autoscaling: false

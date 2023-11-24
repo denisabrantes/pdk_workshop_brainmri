@@ -18,4 +18,4 @@ transform:
     - /pfs/out
 datum_tries: 1
 reprocess_spec: every_job
-autoscaling: false
+autoscaling: true
