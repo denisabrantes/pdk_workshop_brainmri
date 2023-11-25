@@ -9,7 +9,7 @@ input:
     branch: master
 transform:
   cmd: ["/bin/sh"]
-  stdin: ["python deploy.py --deployment-name denisd-ws-brain-deploy --cloud-model-host gcp --cloud-model-bucket denisd-pdk-repo-models --resource-requests cpu=2,memory=4Gi --resource-limits cpu=4,memory=8Gi"]
+  stdin: ["python deploy.py --deployment-name user1-ws-brain-deploy --cloud-model-host gcp --cloud-model-bucket pdk-ws-repo-models --resource-requests cpu=2,memory=4Gi --resource-limits cpu=4,memory=8Gi"]
   image: pachyderm/pdk:brain-deploy-v0.0.1
   secrets: 
   - name: pipeline-secret
@@ -24,4 +24,6 @@ transform:
   - name: pipeline-secret
     key: kserve_namespace
     env_var: KSERVE_NAMESPACE
-autoscaling: false
+parallelism_spec:
+  constant: 1
+autoscaling: true

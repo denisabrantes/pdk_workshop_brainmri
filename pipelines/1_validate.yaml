@@ -16,4 +16,6 @@ transform:
     - --output_dir
     - /pfs/out/
 datum_tries: 1
+parallelism_spec:
+  constant: 1
 autoscaling: true

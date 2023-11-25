@@ -18,4 +18,6 @@ transform:
     - /pfs/out
 datum_tries: 1
 reprocess_spec: every_job
+parallelism_spec:
+  constant: 1
 autoscaling: true

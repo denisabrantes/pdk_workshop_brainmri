@@ -10,7 +10,7 @@ input:
     empty_files: true
 transform:
   cmd: ["/bin/sh"]
-  stdin: ["python train.py --git-url https://git@github.com/denisabrantes/pdk_workshop_brainmri.git --git-ref main --sub-dir experiment --config const.yaml --workspace denisd --mlde_project denisd-brain-mri --repo resize_images --model brain-mri-ws --project denisd-brain-mri-ws --incremental false"]
+  stdin: ["python train.py --git-url https://git@github.com/denisabrantes/pdk_workshop_brainmri.git --git-ref main --sub-dir experiment --config const.yaml --workspace user1 --mlde_project user1-project --repo resize_images --model user1-brain-mri-ws --project user1-brain-mri-ws --incremental false"]
   image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_modeltrain:1.02
   secrets: 
   - name: pipeline-secret
@@ -25,4 +25,6 @@ transform:
   - name: pipeline-secret
     key: pac_token
     env_var: PAC_TOKEN
+parallelism_spec:
+  constant: 1
 autoscaling: true
