@@ -34,7 +34,7 @@ environment:
   image:
     cuda: hugcyrill/breck:nb_0.0.1
 resources:
-  resource_pool: gpu-pool
+  resource_pool: compute-pool
   slots_per_trial: 1
 max_restarts: 0
 entrypoint: model_def:MRIUnetTrial
