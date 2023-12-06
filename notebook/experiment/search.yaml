@@ -1,16 +1,23 @@
-name: Pipeline-Run-Brain-MRI-Search
+name: Brain-MRI-Search
+workspace: Participants
+project: user01
+environment:
+  image:
+    cuda: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_notebook:1.01
+labels:
+  - Hyperparameter Search
 data:
   data_dir: "/data"
   repo: "mateuszbuda/brain-segmentation-pytorch"
   model: "unet"
   download_directory: "/tmp"
   pachyderm:
-    host:
-    port:
-    repo:
-    project:
-    branch:
-    token:
+    host: "34.71.146.200"
+    port: "80"
+    repo: "resize_images"
+    project: "user01-brain-mri-ws"
+    branch: "master"
+    token: ""
 hyperparameters:
   global_batch_size: 32
   init_features: 32
@@ -32,7 +39,7 @@ records_per_epoch: 3143 # 3143 for seed 1 and 2, we can consider seed 2 as our s
 searcher:
   max_length:
     batches: 136
-  max_trials: 80
+  max_trials: 24
   mode: aggressive
   divisor: 2
   max_concurrent_trials: 4
@@ -42,7 +49,7 @@ searcher:
 min_validation_period:
   epochs: 5
 resources:
-  resource_pool: gpu-pool
+  resource_pool: compute-pool
   slots_per_trial: 1
 max_restarts: 0
 entrypoint: model_def:MRIUnetTrial
