@@ -32,7 +32,7 @@ min_validation_period:
   epochs: 1
 environment:
   image:
-    cuda: hugcyrill/breck:nb_0.0.1
+    cuda: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_notebook:1.02
 resources:
   resource_pool: compute-pool
   slots_per_trial: 1
