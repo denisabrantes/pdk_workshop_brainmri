@@ -1,9 +1,9 @@
-name: Pipeline-Run-Brain-MRI
-workspace: Participants
-project: user01
+name: Notebook-Run-Brain-MRI
+workspace: 2023_12_13_Workshop
+project: default
 environment:
   image:
-    cuda: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_notebook:1.01
+    cuda: determinedai/environments:cuda-11.3-pytorch-1.12-tf-2.11-gpu-2b7e2a1
 labels:
   - Basic Experiment
 data:

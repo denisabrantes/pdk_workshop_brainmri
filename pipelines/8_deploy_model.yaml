@@ -24,6 +24,13 @@ transform:
   - name: pipeline-secret
     key: kserve_namespace
     env_var: KSERVE_NAMESPACE
+  - name: pipeline-secret
+    key: mldm_host
+    env_var: PACHD_PEER_SERVICE_HOST
+  - name: pipeline-secret
+    key: mldm_port
+    env_var: PACHD_PEER_SERVICE_PORT    
+datum_tries: 1
 parallelism_spec:
   constant: 1
 autoscaling: true
