@@ -11,7 +11,7 @@ input:
 transform:
   cmd: ["/bin/sh"]
   stdin: ["python train.py --git-url https://git@github.com/denisabrantes/pdk_workshop_brainmri.git --git-ref main --sub-dir experiment --config const.yaml --workspace 2023_12_13_Workshop --mlde_project user01 --repo resize_images --model user01-brain-mri-ws --project user01-brain-mri-ws --incremental false"]
-  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_modeltrain:1.02
+  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_modeltrain:1.07
   secrets: 
   - name: pipeline-secret
     key: det_master
