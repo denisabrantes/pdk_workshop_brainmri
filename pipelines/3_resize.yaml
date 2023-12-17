@@ -6,11 +6,13 @@ input:
     repo: convert_images
     name: in
 # 1 datum with all image files:
-    glob: "/*[!_report]"
-# 1 datum per file (DO NOT RUN IN LAB):
+    #glob: "/*[!_report]"
+# 1 datum per patient folder:
+    glob: "/*/*[!.csv]"
+# 1 datum per file:
     # glob: "/**.tif"
 transform:
-  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:1.31
+  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:2.01
   cmd:
     - python3
     - ./resize.py
@@ -20,5 +22,5 @@ transform:
     - /pfs/out/
 datum_tries: 1
 parallelism_spec:
-  constant: 1
+  constant: 5
 autoscaling: true

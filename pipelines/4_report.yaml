@@ -5,15 +5,15 @@ input:
   union:
     - pfs:
         repo: validate_images
-        glob: "/_report/*.csv"
+        glob: "/_report"
     - pfs:
         repo: convert_images
-        glob: "/_report/*.csv"
+        glob: "/_report"
     - pfs:
         repo: resize_images
-        glob: "/_report/*.csv"
+        glob: "/_report"
 transform:
-  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:1.31
+  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:2.01
   cmd:
     - python3
     - ./report.py
@@ -26,5 +26,5 @@ transform:
 datum_tries: 1
 reprocess_spec: every_job
 parallelism_spec:
-  constant: 1
+  constant: 3
 autoscaling: true

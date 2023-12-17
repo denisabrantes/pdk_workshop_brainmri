@@ -5,9 +5,12 @@ input:
   pfs:
     repo: brain-mri-data
     name: in
-    glob: "/"
+# 1 datum with all files:
+    #glob: "/"
+# 1 datum per patient folder (do not run per file, because the code checks if the file has a mask):
+    glob: "/*/*"
 transform:
-  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:1.31
+  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:2.01
   cmd:
     - python3
     - ./validate.py
@@ -17,5 +20,5 @@ transform:
     - /pfs/out/
 datum_tries: 1
 parallelism_spec:
-  constant: 1
+  constant: 5
 autoscaling: true

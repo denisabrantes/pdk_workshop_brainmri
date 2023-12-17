@@ -6,7 +6,7 @@ input:
      repo: create_report
      glob: "/"
 transform:
-  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:1.31
+  image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_imgutils:2.01
   cmd:
     - python3
     - ./report.py
