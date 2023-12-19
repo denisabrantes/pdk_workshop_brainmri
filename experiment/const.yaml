@@ -32,7 +32,7 @@ min_validation_period:
   epochs: 1
 environment:
   image:
-    cuda: determinedai/environments:cuda-11.3-pytorch-1.12-tf-2.11-gpu-2b7e2a1
+    cuda: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_notebook:1.02
 checkpoint_storage:
   save_trial_best: 4
 resources:
