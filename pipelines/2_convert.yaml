@@ -22,5 +22,5 @@ transform:
     - /pfs/out/
 datum_tries: 1
 parallelism_spec:
-  constant: 5
+  constant: 3
 autoscaling: true
