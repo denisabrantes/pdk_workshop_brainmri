@@ -1,5 +1,5 @@
 name: Notebook-Run-Brain-MRI
-workspace: 2024_MM_DD_Workshop
+workspace: 2024_01_10_Workshop
 project: default
 environment:
   image:
