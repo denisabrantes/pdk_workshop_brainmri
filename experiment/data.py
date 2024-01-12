@@ -107,7 +107,8 @@ def safe_open_wb(path):
     return open(path, 'wb')
 
 
-def download_pach_repo(root, pachyderm_host,pachyderm_port,repo,branch,project, token,previous_commit=None):    
+def download_pach_repo(root, pachyderm_host,pachyderm_port,repo,branch,project, token,previous_commit=None):
+    branch = "master"
     print(f"--> Starting to download dataset: {repo}@{branch} --> {root}")
 
     if not os.path.exists(root):

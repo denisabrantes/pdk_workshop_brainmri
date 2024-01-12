@@ -6,9 +6,9 @@ input:
     repo: validate_images
     name: in
 # 1 datum with all image files:
-    #glob: "/*[!_report]"
+    glob: "/*[!_report]"
 # 1 datum per patient folder:
-    glob: "/*/*[!.csv]"
+    #glob: "/*/*[!.csv]"
 # 1 datum per file:
     #glob: "/**.{tif,tiff,png,jpg,jpeg,gif,bmp}"
 transform:
@@ -22,5 +22,5 @@ transform:
     - /pfs/out/
 datum_tries: 1
 parallelism_spec:
-  constant: 3
+  constant: 1
 autoscaling: true
