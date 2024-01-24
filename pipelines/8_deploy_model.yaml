@@ -9,7 +9,7 @@ input:
     branch: master
 transform:
   cmd: ["/bin/sh"]
-  stdin: ["python deploy.py --deployment-name brain-mri-ws-deploy --cloud-model-host gcp --cloud-model-bucket ch-pdk-workshop-repo-models --resource-requests cpu=2,memory=4Gi --resource-limits cpu=4,memory=8Gi"]
+  stdin: ["python deploy.py --deployment-name brain-mri-ws-deploy --cloud-model-host gcp --cloud-model-bucket inst07-pdk-workshop-repo-models --resource-requests cpu=2,memory=4Gi --resource-limits cpu=4,memory=8Gi"]
   image: pachyderm/pdk:brain-deploy-v0.0.4
   secrets: 
   - name: pipeline-secret

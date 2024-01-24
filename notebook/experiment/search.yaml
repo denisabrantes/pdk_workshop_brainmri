@@ -12,7 +12,7 @@ data:
   model: "unet"
   download_directory: "/tmp"
   pachyderm:
-    host: "34.90.184.213"
+    host: "35.223.127.165"
     port: "80"
     repo: "resize_images"
     project: "brain-mri-workshop"
