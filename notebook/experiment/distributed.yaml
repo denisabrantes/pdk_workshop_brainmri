@@ -1,5 +1,5 @@
 name: Notebook-Run-Brain-MRI-Distributed
-workspace: 2024_01_30_Workshop
+workspace: 2024_02_27_Workshop
 project: default
 environment:
   image:
@@ -12,7 +12,7 @@ data:
   model: "unet"
   download_directory: "/tmp"
   pachyderm:
-    host: "104.198.50.7"
+    host: "34.31.1.9"
     port: "80"
     repo: "resize_images"
     project: "brain-mri-workshop"
