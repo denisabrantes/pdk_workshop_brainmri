@@ -10,7 +10,7 @@ input:
     empty_files: true
 transform:
   cmd: ["/bin/sh"]
-  stdin: ["python train.py --git-url https://git@github.com/denisabrantes/pdk_workshop_brainmri.git --git-ref main --sub-dir experiment --config const.yaml --repo resize_images  --incremental false --workspace 2024_02_27_Workshop --model pdk-brain-mri --mlde_project default --project brain-mri-workshop"]
+  stdin: ["python train.py --git-url https://git@github.com/denisabrantes/pdk_workshop_brainmri.git --git-ref main --sub-dir experiment --config const.yaml --repo resize_images  --incremental false --workspace 2024_03_18_Workshop --model pdk-brain-mri --mlde_project default --project brain-mri-workshop"]
   image: us-central1-docker.pkg.dev/dai-dev-554/denisd-registry/pdk_ws_brainmri_modeltrain:1.03_reg
   secrets: 
   - name: pipeline-secret
